@@ -1,6 +1,16 @@
 <?php include('header.php');?> 
 	<div class="container">
 		<br>
+		<?php if($error = $this->session->flashdata('response2')):?>
+			<div class="alert alert-dismissible alert-warning">
+				<?php echo $error; ?>
+			</div>
+		<?php endif;?>
+		<?php if($error = $this->session->flashdata('response1')):?>
+			<div class="alert alert-dismissible alert-info">
+				<?php echo $error; ?>
+			</div>
+		<?php endif;?>
 		<?php if($error = $this->session->flashdata('response')):?>
 			<div class="alert alert-dismissible alert-success">
 				<?php echo $error; ?>
@@ -27,8 +37,8 @@
 					echo "<td>".$row->TITLE."</td>";
 					echo "<td>".$row->GENRE."</td>";
 					echo "<td>".$row->STATUS."</td>";
-					echo "<td>".anchor("home/updateStatus",'Watched!',['class'=>'btn btn-success'])."</td>";
-					echo "<td>".anchor("home/deleteMovie",'Remove',['class'=>'btn btn-danger'])."</td>";
+					echo "<td>".anchor("home/updateStatus?id=$row->ID",'Watched!',['class'=>'btn btn-success'])."</td>";
+					echo "<td>".anchor("home/deleteMovie?id=$row->ID",'Remove',['class'=>'btn btn-danger'])."</td>";
 				}
 			?>
 			</tr>

@@ -10,6 +10,14 @@
         public function setRecords($data){
             return $this->db->insert('watchlist',$data);  // Produces: SELECT * FROM mytable
         }
+
+        public function updateToWatched($id){
+            return $this->db->query("update watchlist set STATUS='Watched' where id='".$id."'");
+        }
+        
+        public function deleteMovie($id){
+            return $this->db->query("delete from watchlist where id='".$id."'");
+        }
     }
 
 

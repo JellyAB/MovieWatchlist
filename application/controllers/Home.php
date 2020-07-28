@@ -45,11 +45,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function updateStatus(){
+            $id = $this->input->get('id');
+            if($this->Moviesmodel->updateToWatched($id)){
+                $this->session->set_flashdata('response1','Cool! You watched that movie, finally :P');
+            }else{
+                $this->session->set_flashdata('response1','Something went wrong! :(');
+            }
+            return redirect('home/displayRecords');
 
+    
         }
 
         public function deleteMovie(){
-            
+            $id = $this->input->get('id');
+            if($this->Moviesmodel->deleteMovie($id)){
+                $this->session->set_flashdata('response2','That movie is off your list now!');
+            }else{
+                $this->session->set_flashdata('response2','Something went wrong! :(');
+            }
+            return redirect('home/displayRecords');
         }
  
          
