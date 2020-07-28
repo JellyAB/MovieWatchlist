@@ -6,6 +6,10 @@
             return $query->result();
             
         }
+
+        public function setRecords($data){
+            return $this->db->insert('watchlist',$data);  // Produces: SELECT * FROM mytable
+        }
     }
 
 

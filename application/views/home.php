@@ -1,5 +1,17 @@
 <?php include('header.php');?> 
 	<div class="container">
+		<br>
+		<?php if($error = $this->session->flashdata('response')):?>
+			<div class="alert alert-dismissible alert-success">
+				<?php echo $error; ?>
+			</div>
+		<?php endif;?>
+		<div class="row">
+			<div class="col-lg-12">
+				<?php echo anchor("home/createMovie",'Add',['class'=>'btn btn-primary']);?>
+			</div>
+		</div>
+		<br>
 		<table class="table table-hover">
 		<thead>
 			<tr>
