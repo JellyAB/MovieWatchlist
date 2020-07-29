@@ -6,21 +6,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             //$this->load->helper('url');// its in config now
             $this->load->model('Moviesmodel');
         }
-
+        /*
+        | -------------------------------------------------------------------------
+        | Controller for Home page where it displays database records
+        | -------------------------------------------------------------------------
+        */
         public function displayRecords(){
             $records['data'] = $this->Moviesmodel->getRecords();
             $this->load->view('home',$records);
         }
-
+        /*
+        | -------------------------------------------------------------------------
+        | Controller for viewing the page where the user can add a new movie to the list
+        | -------------------------------------------------------------------------
+        */
         public function createMovie(){
             $this->load->view('addMovie');  
         }
-
+        /*
+        | -------------------------------------------------------------------------
+        | Controller for viewing the monthly report of the movies watched by the user
+        | -------------------------------------------------------------------------
+        */
         public function viewReport(){
             $records['data'] = $this->Moviesmodel->getReport();
             $this->load->view('report',$records);  
         }
-
+        /*
+        | -------------------------------------------------------------------------
+        | Controller for saving the data input by the user into the database
+        | -------------------------------------------------------------------------
+        */
         public function save(){
             $this->form_validation->set_rules('TITLE', 'Movie Title', 'required');
             $this->form_validation->set_rules('GENRE', 'Genre', 'required');
@@ -48,6 +64,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 return redirect('home');
             }
         }
+        /*
+        | -------------------------------------------------------------------------
+        | Controller for updating the status from unwatched to -> watched
+        | -------------------------------------------------------------------------
+        */
 
         public function updateStatus(){
             $id = $this->input->get('id');
@@ -57,9 +78,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $this->session->set_flashdata('response1','Something went wrong! :(');
             }
             return redirect('home');
-
-    
         }
+        /*
+        | -------------------------------------------------------------------------
+        | Controller for deleting a movie user prefers to remove
+        | -------------------------------------------------------------------------
+        */
 
         public function deleteMovie(){
             $id = $this->input->get('id');
