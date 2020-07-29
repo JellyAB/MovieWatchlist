@@ -16,6 +16,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->view('addMovie');  
         }
 
+        public function viewReport(){
+            $records['data'] = $this->Moviesmodel->getReport();
+            $this->load->view('report',$records);  
+        }
+
         public function save(){
             $this->form_validation->set_rules('TITLE', 'Movie Title', 'required');
             $this->form_validation->set_rules('GENRE', 'Genre', 'required');
@@ -40,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }else{
                     $this->session->set_flashdata('response','Something went wrong! :(');
                 }
-                return redirect('home/displayRecords');
+                return redirect('home');
             }
         }
 
@@ -51,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }else{
                 $this->session->set_flashdata('response1','Something went wrong! :(');
             }
-            return redirect('home/displayRecords');
+            return redirect('home');
 
     
         }
@@ -63,9 +68,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }else{
                 $this->session->set_flashdata('response2','Something went wrong! :(');
             }
-            return redirect('home/displayRecords');
+            return redirect('home');
         }
- 
+
+        
          
     }
 ?>

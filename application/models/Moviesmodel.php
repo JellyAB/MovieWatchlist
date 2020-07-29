@@ -18,6 +18,13 @@
         public function deleteMovie($id){
             return $this->db->query("delete from watchlist where id='".$id."'");
         }
+
+        public function getReport(){
+            $query = $this->db->query('select * from watchlist where status="Watched" AND MONTH(WATCHED_DATE) = MONTH(CURDATE())' );  //Produces the movies watched in the current month
+            return $query->result();
+            
+        }
+
     }
 
 

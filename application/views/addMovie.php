@@ -6,7 +6,9 @@
         <?php echo form_open('home/save',['class'=>'form-horizontal']); ?>
         <fieldset>
             <div class="container"></div>
-            <legend>Add New Movie</legend>
+                <div class="jumbotron">
+                    <h1 class="display-5">Let's add that movie!🎥😍</h1>
+            </div>  
             <br>
                 <div class="row">
                     <div class="col-lg-6">

@@ -1,4 +1,9 @@
 <?php include('header.php');?> 
+<div class="jumbotron">
+  <h1 class="display-4">Hello there, Movie maniac!🎬🎶</h1>
+  <hr class="my-4">
+  <p class="lead">Welcome to the world where you never forget a movie you wanna watch🤩</p>
+</div>
 	<div class="container">
 		<br>
 		<?php if($error = $this->session->flashdata('response2')):?>
@@ -18,7 +23,8 @@
 		<?php endif;?>
 		<div class="row">
 			<div class="col-lg-12">
-				<?php echo anchor("home/createMovie",'Add',['class'=>'btn btn-primary']);?>
+				<?php echo anchor("createMovie",'Add Movie',['class'=>'btn btn-primary']);?>
+				<?php echo anchor("viewReport",'Monthly Report',['class'=>'btn btn-outline-info']);?>
 			</div>
 		</div>
 		<br>
@@ -46,6 +52,3 @@
 		</table> 
 	</div>
 <?php include('footer.php');?> 
-
-
-
